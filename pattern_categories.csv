@@ -1,0 +1,102 @@
+id,long_name
+302,Clothing
+305,Shrug / Bolero
+310,Vest
+311,Coat / Jacket
+313,Skirt
+314,Shorts
+316,Pants
+318,Leggings
+319,Sweater
+304,Cardigan
+306,Pullover
+897,Sweater - Other
+321,Soakers
+322,Onesies
+325,Dress
+327,Robe
+328,Intimate Apparel
+329,Underwear
+330,Bra
+331,Pasties
+896,Intimate Apparel - Other
+332,Sleepwear
+333,Swimwear
+898,Clothing - Other
+912,Tops
+307,Tee
+308,Sleeveless Top
+309,Strapless Top
+913,Other Top
+337,Accessories
+338,Neck / Torso
+339,Scarf
+340,Cowl
+341,Collar
+346,Necktie
+347,Bib
+348,Cape
+349,Poncho
+350,Shawl / Wrap
+894,Neck / Torso - Other
+353,Feet / Legs
+354,Socks
+363,Slippers
+364,Booties
+365,Legwarmers
+366,Spats
+890,Feet / Legs - Other
+916,Boot Cuffs / Toppers
+368,Belt
+372,Bag
+373,Clutch
+374,Tote
+375,Purse / Handbag
+376,Wristlet
+377,Market bag (slouchy)
+378,Laptop
+380,Messenger Bag
+382,Backpack
+385,Drawstring Bag
+386,Duffle Bag
+387,Money Purse
+888,Bag - Other
+390,Hands
+391,Mittens
+394,Gloves
+395,Fingerless Gloves
+398,Convertible Gloves
+399,Cuffs
+400,Muff
+891,Hands - Other
+401,Headwear
+402,Hair accessories
+403,Headband
+405,Snood
+408,Headwrap
+409,Earwarmers
+410,Eye mask
+887,Kerchief
+892,Headwear - Other
+411,Hat
+412,"Beret, Tam"
+413,"Beanie, Toque"
+414,Bonnet
+415,Brimmed Hat
+416,Billed Hat
+417,Cloche Hat
+418,Balaclava
+419,Earflap Hat
+420,Pixie Hat
+422,Stocking
+423,Yarmulke
+915,Hats - Other
+427,Jewelry
+428,Earrings
+429,Necklace
+430,Bracelet
+431,Brooch
+432,Ring
+433,Anklet
+893,Jewelry - Other
+895,Accessories - Other
