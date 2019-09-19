@@ -1,2 +1,0 @@
-# knitpick
-Insight project
