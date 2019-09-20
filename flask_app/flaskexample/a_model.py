@@ -3,8 +3,7 @@ from joblib import load
 import pandas as pd
 import numpy as np
 
-numeric_cols = ['projects_count', 'queued_projects_count', 'rating_average','comments_count',
-                'difficulty_average','num_photos', 'author_pattern_count','author_favorites_count']
+numeric_cols = ['difficulty_average','num_photos']
 
 cat_cols = ['pattern_type','yarn_weight']
 
@@ -82,7 +81,7 @@ def ModelIt(fromUser  = 'Default', user_input = []):
   	data[n] = 1
 
  if fromUser != 'Default':
-  clf = load('/Users/jason/Desktop/stage2_test.joblib')
+  clf = load('/Users/jason/Desktop/stage2_reduced_v0.joblib')
   X_new = pd.DataFrame(data, index=[0])
   price_pred = float(clf.predict(X_new))
   return f'${np.round(price_pred, 2)}'
