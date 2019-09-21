@@ -1,13 +1,23 @@
-.btn-default {
-  background-color: #4CFF00;
+
+.button-group{
+	float:left;
+	margin-right:5%
 }
 
-.btn-sm {
-	background-color: #00BFFF;
+
+body{
+	background-color: #C2DCF0;
+}
+
+.btn-default {
+  background-color: ##4CB5E3;
+}
+
+.btn-lg {
+	background-color: #4CB5E3;
 }
 .slidecontainer {
 	-webkit-appearance: none;  /* Override default CSS styles */
-	background-color: #4CFF00;
 	width: 25%;
 }
 
