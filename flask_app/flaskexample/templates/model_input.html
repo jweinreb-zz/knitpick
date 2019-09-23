@@ -46,77 +46,99 @@
 
 
    <div class="starter-template">
+    <div class='container' style='width:100%'>
     <p style="font-size:100px;float:left;margin-right:20px">🧶</p>
     <br>
-       <h1>Knitpick</h1> <h4> Price your pattern! </h4>
-   </div>
+       <h1 style="color:#4CB5E3">Knitpick</h1> <h4 style="color:#4CB5E3"> Price your pattern! </h4>
+    </div>
+  </div>
 
    <div class = "container">
 
      <form action="/model_output" method="GET">
 
-    <div class='form-group'style="margin-top:40px">
+  <div class='button-group'>
+  <label for='test'></label>
+  <select class="selectpicker" id='test'>
+  <optgroup label="Outerwear">
+    <option>Pullover</option>
+    <option>Cardigan</option>
+    <option>Vest</option>
+  </optgroup>
+  <optgroup label="Tops">
+    <option>Tee</option>
+    <option>Sleeveless Top</option>
+    <option>Strapless Top</option>
+  </optgroup>
+    <optgroup label="Socks">
+    <option>Mid-calf</option>
+    <option>Ankle</option>
+    <option>Knee-high</option>
+  </optgroup>
+  <optgroup label="Neckwear">
+    <option>Scarf</option>
+    <option>Cowl</option>
+    <option>Shawl</option>
+  </optgroup>
+  <optgroup label="Neckwear">
+    <option>Gloves</option>
+    <option>Fingerless</option>
+    <option>Mittens</option>
+    <option>Hat</option>
+  </optgroup>
+</select>
+</div>
 
-     <div class="button-group">
-             <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Pattern Type</button>
-     <ul class="dropdown-menu">
-       <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;
-            <img src="../static/images/bokeh.jpg" height=20 width=20 > Foo
-           </a>
-       </li>
-       <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
-       <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
-       <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
-       <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
-       <li><a href="#" class="small" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
-     </ul>
-    </div>
+<div class='button-group'>
+  <select class="selectpicker" multiple-title='Pattern'>
+  <optgroup label="Light">
+    <option>Lace</option>
+    <option>Light Fingering</option>
+    <option>Fingering</option>
+  </optgroup>
+  <optgroup label="Medium">
+    <option>Sport</option>
+    <option>DK</option>
+    <option>Worsted</option>
+  </optgroup>
+    <optgroup label="Heavy">
+    <option>Aran</option>
+    <option>Chunky</option>
+    <option>Bulky</option>
+  </optgroup>
+</select>
+</div>
 
-     <div class="button-group">
-             <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Yarn</button>
-     <ul class="dropdown-menu">
-       <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;
-            <img src="../static/images/bokeh.jpg" height=20 width=20 >
-           </a>
-       </li>
-       <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
-       <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
-       <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
-       <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
-       <li><a href="#" class="small" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
-     </ul>
-    </div>
-
-    <div class="button-group" style="margin-bottom:40px">
-             <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Neeldes</button>
-     <ul class="dropdown-menu">
-       <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;
-            <img src="../static/images/bokeh.jpg" height=20 width=20 >
-           </a>
-       </li>
-       <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
-       <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
-       <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
-       <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
-       <li><a href="#" class="small" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
+   
+    
+    <div class='container'>
+     <div class="button-group dropright" style='margin-left:0px;margin-top:-10px'>
+             <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Needles</button>
+     <ul class="dropdown-menu" style="float:left;margin-left:100px;width:100%">
+       <h5 style="margin-left:5px"> Thin </h5>
+       <li><input type="checkbox" name='pullover'/>&nbsp;US 1s</li>
+       <li><input type="checkbox" name='cardigan'/>&nbsp;US 1.5s</li>
+       <li><input type="checkbox" name='vest'/>&nbsp;US 2s</li>
+       <li><input type="checkbox" name='vest'/>&nbsp;US 2.5s</li>
+       <li><input type="checkbox" name='vest'/>&nbsp;US 3s</li>
+       <h5 style="margin-left:5px"> Medium </h5>
+       <li><input type="checkbox" name='mid-calf'/>&nbsp;US 4s</li>
+       <li><input type="checkbox" name='ankle'/>&nbsp;US 5s</li>
+       <li><input type="checkbox" name='knee-highs'/>&nbsp;US 6s</li>
+       <li><input type="checkbox" name='knee-highs'/>&nbsp;US 7s</li>
+       <h5 style="margin-left:5px"> Thick </h5>
+       <li><input type="checkbox" name='gloves'/>&nbsp;US 8s</li>
+       <li><input type="checkbox" name='fingerless'/>&nbsp; US 9s</li>
+       <li><input type="checkbox" name='mittens'/>&nbsp;US 10s</li>
+       <li><input type="checkbox" name='mittens'/>&nbsp;US 10.5s</li>
+       <li><input type="checkbox" name='mittens'/>&nbsp;US 11s</li>
+       <li><input type="checkbox" name='mittens'/>&nbsp;US 13s</li>
+       <li><input type="checkbox" name='mittens'/>&nbsp;US 15s</li>
      </ul>
     </div>
   </div>
-  
-     <div class="slidecontainer">
-        <label for="difficulty_average"><h4>Average Difficulty:</h4></label>
-        <input type="range" id="difficulty_average" name='difficulty_average' min=1 max=5 steps=1>
-     </div>
 
-    <div class="form-group">
-       <label for="num_photos"><h4>Num photos:</h4></label>
-       <input type="text" id="num_photos" name='num_photos' placeholder="e.g. 3">
-    </div>
-
-
-
-
-  <div id = "container" style = "width:100%">
+     <div id = "container">
        <!-- Size -->
       <div id ="left" style = "float:left; width: 20%;">
       <h3>Size</h3>
@@ -165,7 +187,8 @@
        </div>
        </div>
      </div>
- </div>
+     </div>
+
 
 
  <div id = "container" style = "width:100%">
@@ -234,10 +257,21 @@
        <div class="checkbox">
          <label><input type="checkbox" name="attribute_has_schematic">Schematic</label>
        </div>
-     </div>
+      </div>
 
-    </div>
-    
+
+           <!-- Instructions -->
+     <div id ="left" style = "float:left;width:50%;display:inline-block">
+       <div class="form-group">
+         <label for="num_photos"> <h3 style='margin-right:10px;'> Photos: </h3> </label>
+         <input type="text" id="birth_month" name='birth_month' placeholder="0" style='width:40px'>
+       </div>
+       <div class="slidecontainer">
+         <label for="num_photos"> <h3 style='margin-right:10px;margin-top:-2px;'>Difficulty:</h3> </label>
+         <input type="range" id="birth_month" name='hoo' placeholder="e.g. Aug">
+       </div>
+      </div>
+
        <div id="left" style="float:left;width:100%;margin-top:30px;margin-bottom:50px">
          <button type="submit" class="btn btn-default btn-lg">Price your pattern</button>
        </div>
@@ -267,6 +301,10 @@
 
         checkList.onblur = function(evt) {
             checkList.classList.remove('visible');
+        }
+
+        function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
         }
   </script>
 

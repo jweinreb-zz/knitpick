@@ -55,8 +55,13 @@ needles_cols = ['needles_us_6',
                 'needles_us_15',
                 'needles_us_0']
 
-
 def ModelIt(fromUser  = 'Default', user_input = []):
+ # fill out default values
+  return user_input
+
+
+
+def ModelIt2(fromUser  = 'Default', user_input = []):
  # fill out default values
  data = dict()
  data['pattern_type'] = 'pullover'

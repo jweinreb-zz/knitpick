@@ -9,8 +9,12 @@ body{
 	background-color: #C2DCF0;
 }
 
+
+.dropdown-menu{
+  background-color: #C2DCF0;
+}
 .btn-default {
-  background-color: ##4CB5E3;
+  background-color: #4CB5E3;
 }
 
 .btn-lg {
@@ -18,7 +22,7 @@ body{
 }
 .slidecontainer {
 	-webkit-appearance: none;  /* Override default CSS styles */
-	width: 25%;
+	width: 35%;
 }
 
 .dropdown-check-list {
