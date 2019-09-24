@@ -1,8 +1,298 @@
-<html>
-   <head>
-       <title>{{title}} - microblog</title>
-   </head>
-   <body>
-       <h1>Hello, {{user.nickname}}!</h1>
-   </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Knitpick</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/bootstrap-template.css" rel="stylesheet">
+
+  <!-- Custom styles for your app -->
+  <link href="../static/css/custom.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <!--here's the input container-->
+
+<div class="container">
+
+
+
+   <div class="starter-template">
+    <div class='container' style='width:100%'>
+    <p style="font-size:100px;float:left;margin-right:20px">🧶</p>
+    <br>
+       <h1 style="color:#4CB5E3">Knitpick</h1> <h4 style="color:#4CB5E3"> Price your pattern! </h4>
+    </div>
+  </div>
+
+   <div class = "container">
+
+     <form action="/model_output" method="GET">
+
+  <div class='button-group btn-md'>
+    
+  <select name='pattern_type' id='pattern_type'>
+  <optgroup label="Outerwear">
+    <option value='pullover'>Pullover</option>
+    <option value='cardigan'>Cardigan</option>
+    <option value='vest'>Vest</option>
+  </optgroup>
+  <optgroup label="Tops">
+    <option value='tee'>Tee</option>
+    <option value='sleeveless-top'>Sleeveless Top</option>
+    <option value='strapless-top'>Strapless Top</option>
+  </optgroup>
+    <optgroup label="Socks">
+    <option value='mid-calf'>Mid-calf</option>
+    <option value='ankle'>Ankle</option>
+    <option value='knee-high'>Knee-high</option>
+  </optgroup>
+  <optgroup label="Neckwear">
+    <option value='scarf'>Scarf</option>
+    <option value='cowl'>Cowl</option>
+    <option value='shawl-wrap'>Shawl</option>
+  </optgroup>
+  <optgroup label="Neckwear">
+    <option value='gloves'>Gloves</option>
+    <option value='fingerless'>Fingerless</option>
+    <option value='mittens'>Mittens</option>
+    <option value='hat'>Hat</option>
+  </optgroup>
+</select>
+</div>
+
+<div class='button-group btn-md'>
+  <select name="yarn_weight"id='yarn_weight'>
+  <optgroup label="Light">
+    <option value='Lace'>Lace</option>
+    <option value='Light Fingering'>Light Fingering</option>
+    <option vale='Fingering'>Fingering</option>
+  </optgroup>
+  <optgroup label="Medium">
+    <option value='Sport'>Sport</option>
+    <option value='DK'>DK</option>
+    <option value='Worsted'>Worsted</option>
+  </optgroup>
+    <optgroup label="Heavy">
+    <option value='Aran'>Aran</option>
+    <option value='Bulky'>Bulky</option>
+    <option value='Super Bulky'>Super Bulky</option>
+  </optgroup>
+</select>
+</div>
+
+   
+    
+    <div class='container'>
+     <div class="btn-md button-group dropright" style='margin-left:0px;margin-top:0px'>
+             <button type="btn-lg" class="btn-lg dropdown-toggle" data-toggle="dropdown">Needles</button>
+     <ul class="dropdown-menu" style="float:left;margin-left:100px;width:100%">
+       <h5 style="margin-left:5px"> Thin </h5>
+       <li><input type="checkbox" name='needles_us_1'/>&nbsp;US 1s</li>
+       <li><input type="checkbox" name='needles_us_1h'/>&nbsp;US 1.5s</li>
+       <li><input type="checkbox" name='needles_us_2'/>&nbsp;US 2s</li>
+       <li><input type="checkbox" name='needles_us_2h'/>&nbsp;US 2.5s</li>
+       <li><input type="checkbox" name='needles_us_3'/>&nbsp;US 3s</li>
+       <h5 style="margin-left:5px"> Medium </h5>
+       <li><input type="checkbox" name='needles_us_4'/>&nbsp;US 4s</li>
+       <li><input type="checkbox" name='needles_us_5'/>&nbsp;US 5s</li>
+       <li><input type="checkbox" name='needles_us_6'/>&nbsp;US 6s</li>
+       <li><input type="checkbox" name='needles_us_7'/>&nbsp;US 7s</li>
+       <h5 style="margin-left:5px"> Thick </h5>
+       <li><input type="checkbox" name='needles_us_8'/>&nbsp;US 8s</li>
+       <li><input type="checkbox" name='needles_us_9'/>&nbsp; US 9s</li>
+       <li><input type="checkbox" name='needles_us_10'/>&nbsp;US 10s</li>
+       <li><input type="checkbox" name='needles_us_10h'/>&nbsp;US 10.5s</li>
+       <li><input type="checkbox" name='needles_us_11'/>&nbsp;US 11s</li>
+       <li><input type="checkbox" name='needles_us_13'/>&nbsp;US 13s</li>
+       <li><input type="checkbox" name='needles_us_15'/>&nbsp;US 15s</li>
+     </ul>
+    </div>
+  </div>
+
+     <div id = "container">
+       <!-- Size -->
+      <div id ="left" style = "float:left; width: 20%;">
+      <h3>Size</h3>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_toddler">toddler</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_baby">baby</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_child">child</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_teen">teen</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_adult">adult</label>
+       </div>
+     </div>
+ 
+       <!-- Gender -->
+       <div id ="left" style = "float:left; width: 20%;">
+       <h3>Gender</h3>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_male">Male</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_female">Female</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_unisex">Unisex</label>
+       </div>
+      </div>
+
+       <!-- Fit -->
+       <div id ="left" style = "float:left; width: 20%;">
+       <h3>Fit</h3>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_positive_ease">Positive Ease</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_long">Long</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_fitted">Fitted</label>
+       </div>
+       </div>
+     </div>
+     </div>
+
+
+
+ <div id = "container" style = "width:100%">
+
+         <!-- Design Elements -->
+      <div id ="left" style = "float:left; width: 20%;">
+       <h3>Design Elements</h3>
+       <div class="checkbox">
+         <label><input type="checkbox" name="buttoned_mod">buttoned</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_cabled">cables</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_eyelets">eyelets</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_lace">lace</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_ribbed_ribbing">ribbing</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_short_rows">short rows</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_stranded">stranded</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_stripes_colorwork">stripes</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_textured">textured</label>
+       </div>
+     </div>
+
+      <!-- Construction -->
+      <div id ="left" style = "float:left; width: 20%;">
+       <h3>Construction</h3>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_worked_flat">Worked flat</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_worked_in_the_round">Worked in the round</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_bottom_up">Worked bottom up</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_top_down">Worked top down</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_one_piece">One piece</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_seamed">Seaming required</label>
+       </div>
+     </div>
+
+       <!-- Instructions -->
+     <div id ="left" style = "float:left; width: 20%;">
+       <h3> Instructions</h3>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_chart">Chart</label>
+       </div>
+       <div class="checkbox">
+         <label><input type="checkbox" name="attribute_has_schematic">Schematic</label>
+       </div>
+      </div>
+
+
+           <!-- Instructions -->
+     <div id ="left" style = "float:left;width:50%;display:inline-block">
+       <div class="form-group">
+         <label for="num_photos"> <h3 style='margin-right:10px;'> Photos: </h3> </label>
+         <input type="text" id="num_photos" name='num_photos' placeholder="0" style='width:40px' value=0>
+       </div>
+       <div class='form-group'>
+       <div class="slidecontainer">
+         <label for="difficulty_average"> <h3 style='margin-right:10px;margin-top:-2px;'>Difficulty:</h3> </label>
+         <input type="range" id="difficulty_average" name='difficulty_average' max=5 min=1 value=3>
+         <p>
+          <div style='float:left'> Easy</div>
+          <div style='float:right'> Hard!</div>
+          <p>
+       </div>
+     </div>
+      </div>
+      
+      <div class='button-group' style='width:100%;'>
+       <div id="left" style="float:left;width:50%;margin-top:30px;margin-bottom:50px;height:50px;">
+         <button type="submit" class="btn btn-default btn-lg">Price your pattern</button>
+       </div>
+     </div>
+
+    </div>
+     </form>
+   </div>
+
+   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+   <script src="static/js/bootstrap.min.js"></script>
+
+ </div> <!-- /.container-->
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </body>
 </html>

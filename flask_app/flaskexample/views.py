@@ -8,7 +8,7 @@ May 2019, Donald Lee-Brown
 
 from flask import render_template
 from flaskexample import app
-from flaskexample.a_model import ModelIt3
+from flaskexample.a_model import ModelIt3, ModelIt4
 import pandas as pd
 from flask import request
 from sqlalchemy_utils import database_exists, create_database
@@ -17,12 +17,7 @@ import psycopg2
 # Python code to connect to Postgres
 # You may need to modify this based on your OS, 
 # as detailed in the postgres dev setup materials.
-user = 'jason' #add your Postgres username here      
-host = 'localhost'
-dbname = 'insight'
-db = create_engine('postgres://%s%s/%s'%(user,host,dbname))
-con = None
-con = psycopg2.connect(database = dbname, user = user)
+
 
 @app.route('/')
 @app.route('/index')
@@ -31,26 +26,11 @@ def index():
    title = 'Home', user = { 'nickname': 'Miguel' },
       )
 
-@app.route('/db')
-def birth_page():
-  sql_query = """                                                                       
-               SELECT * FROM patterns3 LIMIT 10;          
-               """
-  with con.cursor() as cur:
-    cur.execute(sql_query)
-    res = cur.fetchall()
-  query_results = pd.DataFrame(res)
-  return query_results.iloc[0,1]
-
 # here's the homepage
-@app.route('/')
-def homepage():
-    return render_template("bootstrap_template.html")
+#@app.route('/')
+#def homepage():
+#    return render_template("bootstrap_template.html")
 
-# example page for linking things
-@app.route('/example_linked')
-def linked_example():
-    return render_template("example_linked.html")
 
 #here's a page that simply displays the births data
 @app.route('/example_dbtable')
@@ -68,7 +48,7 @@ def birth_table_page():
 
 # now let's do something fancier - take an input, run it through a model, and display the output on a separate page
 
-@app.route('/model_input')
+@app.route('/')
 def birthmodel_input():
    return render_template("model_input.html")
 
@@ -76,4 +56,5 @@ def birthmodel_input():
 def birthmodel_output():
    user_input = request.args.to_dict()
    the_result = ModelIt3(request.args.to_dict(), request.args.to_dict())
-   return render_template("model_output.html", user_input=user_input, the_result=the_result)
+   the_links = ModelIt4(request.args.to_dict(), request.args.to_dict())
+   return render_template("model_output.html", user_input=user_input, the_result=the_result, the_links=the_links)

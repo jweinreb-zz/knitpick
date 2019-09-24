@@ -43,18 +43,22 @@
     </div>
   </div>
 
-  <h3>{{the_result}}</h3>
+  
 
-  <div style='float:left;'> Patterns like yours typically sell for {{the_result}}</div>
+  <div style='float:left'>
+    Patterns like yours typically sell for <h3>{{the_result['price']}}</h3> At this price, the patttern would have approximately <h3>{{the_result['projects']}} Ravelry projects</h3>
+
+  <br>
   <br>
   <br>
   <a href="http://www.ravelry.com" class="btn btn-lg" role="button">Go to Ravelry</a>
-  <a href="/model_input" class="btn btn-lg" role="button">Price another pattern</a>
+  <a href="/" class="btn btn-lg" role="button">Price another pattern</a>
 </div>
+
+
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>

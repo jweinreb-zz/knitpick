@@ -1,7 +1,12 @@
 from collections import defaultdict
 from joblib import load
+import pickle
 import pandas as pd
 import numpy as np
+from sklearn.neighbors import KDTree
+
+#df = pd.read_csv("/Users/jason/github/knitpick/flask_app/knitpick.csv")
+#df.loc[:, 'buttoned_mod'] = df[['attribute_buttoned', 'attribute_buttonholes']].max(axis=1)
 
 numeric_cols = ['difficulty_average','num_photos']
 
@@ -55,6 +60,50 @@ needles_cols = ['needles_us_6',
                 'needles_us_15',
                 'needles_us_0']
 
+pattern_types = ['ankle',
+ 'cardigan',
+ 'coat',
+ 'cowl',
+ 'dress',
+ 'fingerless',
+ 'gloves',
+ 'hat',
+ 'knee-highs',
+ 'mid-calf',
+ 'mittens',
+ 'other-socks',
+ 'other-sweater',
+ 'other-top',
+ 'pullover',
+ 'scarf',
+ 'shawl-wrap',
+ 'shrug',
+ 'skirt',
+ 'sleeveless-top',
+ 'strapless-top',
+ 'tee',
+ 'thigh-high',
+ 'toeless',
+ 'tube',
+ 'vest']
+
+yarn_weights = ['Any gauge',
+ 'Aran',
+ 'Aran / Worsted',
+ 'Bulky',
+ 'Cobweb',
+ 'DK',
+ 'DK / Sport',
+ 'Fingering',
+ 'Jumbo',
+ 'Lace',
+ 'Light Fingering',
+ 'No weight specified',
+ 'None',
+ 'Sport',
+ 'Super Bulky',
+ 'Thread',
+ 'Worsted']
 
 def ModelIt3(fromUser  = 'Default', user_input = []):
  # fill out default values
@@ -64,26 +113,67 @@ def ModelIt3(fromUser  = 'Default', user_input = []):
 
  for k, v in user_input.items():
   if v == 'on':
-    user_input[k] = 1
+    user_input[k] = True
  
  for k in attribute_cols + needles_cols:
   if not user_input.get(k):
-    user_input[k] = 0
+    user_input[k] = False
+
+ if fromUser != 'Default':
+  clf = load('/Users/jason/Desktop/stage2_reduced_v0.joblib')
+  X_new = pd.DataFrame(user_input, index=[0])
+  price_pred = float(clf.predict(X_new))
+  #return f'${np.round(price_pred, 2)}'
+  user_input['price'] = price_pred
+  clf2 = load('/Users/jason/github/knitpick/third_stage_projects.joblib')
+  X_new = pd.DataFrame(user_input, index=[0])
+  proj_pred = float(clf2.predict(X_new))
+  return dict(price=f'${np.round(price_pred, 2)}', projects=int(np.round(proj_pred, 0)))
+ else:
+  return 'check your input'
+
+def ModelIt4(fromUser  = 'Default', user_input = []):
+ # fill out default values
+ 
+ user_input['num_photos'] = int(user_input['num_photos'])
+ user_input['difficulty_average'] = int(user_input['difficulty_average'])
+
+ for k, v in user_input.items():
+  if v == 'on':
+    user_input[k] = True
+ 
+ for k in attribute_cols + needles_cols:
+  if not user_input.get(k):
+    user_input[k] = False
 
  if fromUser != 'Default':
   # return user_input
   clf = load('/Users/jason/Desktop/stage2_reduced_v0.joblib')
   X_new = pd.DataFrame(user_input, index=[0])
-  price_pred = float(clf.predict(X_new))
-  return f'${np.round(price_pred, 2)}'
+  X_new_cat = X_new[cat_cols]
+  X_new = X_new[numeric_cols + attribute_cols + needles_cols]
+  newcols = ['yarn_weight_' + y for y in sorted(yarn_weights)] + ['pattern_type_' + p for p in sorted(pattern_types)]
+
+  with open('/Users/jason/github/knitpick/flask_app/kdtree.p', 'rb') as f:
+    tree = pickle.load(f)
+  #dist, ind = tree.query(X_new, k=5)
+  df_to_query = pd.concat([X_new, pd.get_dummies(X_new_cat).reindex(columns=newcols, fill_value=0)], axis=1)
+  dist, ind = tree.query(df_to_query, k=1000)
+
+  with open('/Users/jason/github/knitpick/flask_app/pattern_data.p', "rb") as f:
+    metadata = pickle.load(f)
+    metadata = metadata.loc[(metadata[list(user_input)] == pd.Series(user_input)).all(axis=1)]
+    #return subdf.permalink
+    the_links = []
+    #for i, row in subdf.iterrows():
+      #the_links.append(dict(name=row['name'], permalink=row.permalink))
+    #return the_links
+    #for i, row in metadata.head().iterrows():
+    #  the_links.append(dict(name=row['name'], permalink=row.permalink))
+    return metadata
+  #return {'names': subdf.name, 'permalinks': subdf.permalink}
+  #return metadata.iloc[2]
  else:
   return 'check your input'
-
-
-
-
-
-
-
 
 
