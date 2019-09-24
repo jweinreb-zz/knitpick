@@ -4,6 +4,7 @@ import pickle
 import pandas as pd
 import numpy as np
 from sklearn.neighbors import KDTree
+import os
 
 #df = pd.read_csv("/Users/jason/github/knitpick/flask_app/knitpick.csv")
 #df.loc[:, 'buttoned_mod'] = df[['attribute_buttoned', 'attribute_buttonholes']].max(axis=1)
@@ -120,12 +121,12 @@ def ModelIt3(fromUser  = 'Default', user_input = []):
     user_input[k] = False
 
  if fromUser != 'Default':
-  clf = load('/Users/jason/Desktop/stage2_reduced_v0.joblib')
+  clf = load(os.getenv('PRICE_PICKLE_PATH'))
   X_new = pd.DataFrame(user_input, index=[0])
   price_pred = float(clf.predict(X_new))
   #return f'${np.round(price_pred, 2)}'
   user_input['price'] = price_pred
-  clf2 = load('/Users/jason/github/knitpick/third_stage_projects.joblib')
+  clf2 = load(os.getenv("PROJECTS_PICKLE_PATH"))
   X_new = pd.DataFrame(user_input, index=[0])
   proj_pred = float(clf2.predict(X_new))
   return dict(price=f'${np.round(price_pred, 2)}', projects=int(np.round(proj_pred, 0)))
