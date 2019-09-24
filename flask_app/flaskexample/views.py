@@ -8,10 +8,10 @@ May 2019, Donald Lee-Brown
 
 from flask import render_template
 from flaskexample import app
-from flaskexample.a_model import ModelIt
+from flaskexample.a_model import ModelIt3
 import pandas as pd
 from flask import request
-
+from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy import create_engine
 import psycopg2
 # Python code to connect to Postgres
@@ -75,5 +75,5 @@ def birthmodel_input():
 @app.route('/model_output')
 def birthmodel_output():
    user_input = request.args.to_dict()
-   the_result = ModelIt(request.args.to_dict(), request.args.to_dict())
+   the_result = ModelIt3(request.args.to_dict(), request.args.to_dict())
    return render_template("model_output.html", user_input=user_input, the_result=the_result)

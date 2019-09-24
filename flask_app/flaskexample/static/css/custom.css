@@ -18,8 +18,9 @@ body{
 }
 
 .btn-lg {
-	background-color: #4CB5E3;
+	background-color: white;
 }
+
 .slidecontainer {
 	-webkit-appearance: none;  /* Override default CSS styles */
 	width: 35%;

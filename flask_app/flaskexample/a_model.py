@@ -55,44 +55,29 @@ needles_cols = ['needles_us_6',
                 'needles_us_15',
                 'needles_us_0']
 
-def ModelIt(fromUser  = 'Default', user_input = []):
+
+def ModelIt3(fromUser  = 'Default', user_input = []):
  # fill out default values
-  return user_input
-
-
-
-def ModelIt2(fromUser  = 'Default', user_input = []):
- # fill out default values
- data = dict()
- data['pattern_type'] = 'pullover'
- data['yarn_weight'] = 'Worsted'
- for n in numeric_cols:
-  data[n] = 0
- for a in attribute_cols:
-  data[a] = 0
- for n in needles_cols:
-  data[n] = 0
+ 
+ user_input['num_photos'] = int(user_input['num_photos'])
+ user_input['difficulty_average'] = int(user_input['difficulty_average'])
 
  for k, v in user_input.items():
-  if k.startswith('attribute'):
-   data[k] = 1
-  if (k in cat_cols) and (v != ''):
-   data[k] = str(v)
-  if (k in numeric_cols) and (v != ''):
-   data[k] = float(v)
-  needles_used = user_input.get('needle_sizes').split(', ')
-  needles_used = [('neeldes_us_'+ x) for x in needles_used]
-  for n in needles_used:
-  	data[n] = 1
+  if v == 'on':
+    user_input[k] = 1
+ 
+ for k in attribute_cols + needles_cols:
+  if not user_input.get(k):
+    user_input[k] = 0
 
  if fromUser != 'Default':
+  # return user_input
   clf = load('/Users/jason/Desktop/stage2_reduced_v0.joblib')
-  X_new = pd.DataFrame(data, index=[0])
+  X_new = pd.DataFrame(user_input, index=[0])
   price_pred = float(clf.predict(X_new))
   return f'${np.round(price_pred, 2)}'
  else:
   return 'check your input'
-
 
 
 

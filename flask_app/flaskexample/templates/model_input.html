@@ -28,16 +28,6 @@
 </head>
 
 <body>
-    <div class="container">
-    <div class="header clearfix">
-      <nav>
-        <ul class="nav nav-pills pull-left">
-          <!-- don't forget to link pages back to home-->
-          <li role="presentation"><a href="/">&larr; Back to Home</a></li>
-        </ul>
-      </nav>
-    </div>
-<br><br>
 
   <!--here's the input container-->
 
@@ -57,54 +47,54 @@
 
      <form action="/model_output" method="GET">
 
-  <div class='button-group'>
-  <label for='test'></label>
-  <select class="selectpicker" id='test'>
+  <div class='button-group btn-md'>
+    
+  <select name='pattern_type' id='pattern_type'>
   <optgroup label="Outerwear">
-    <option>Pullover</option>
-    <option>Cardigan</option>
-    <option>Vest</option>
+    <option value='pullover'>Pullover</option>
+    <option value='cardigan'>Cardigan</option>
+    <option value='vest'>Vest</option>
   </optgroup>
   <optgroup label="Tops">
-    <option>Tee</option>
-    <option>Sleeveless Top</option>
-    <option>Strapless Top</option>
+    <option value='tee'>Tee</option>
+    <option value='sleeveless-top'>Sleeveless Top</option>
+    <option value='strapless-top'>Strapless Top</option>
   </optgroup>
     <optgroup label="Socks">
-    <option>Mid-calf</option>
-    <option>Ankle</option>
-    <option>Knee-high</option>
+    <option value='mid-calf'>Mid-calf</option>
+    <option value='ankle'>Ankle</option>
+    <option value='knee-high'>Knee-high</option>
   </optgroup>
   <optgroup label="Neckwear">
-    <option>Scarf</option>
-    <option>Cowl</option>
-    <option>Shawl</option>
+    <option value='scarf'>Scarf</option>
+    <option value='cowl'>Cowl</option>
+    <option value='shawl'>Shawl</option>
   </optgroup>
   <optgroup label="Neckwear">
-    <option>Gloves</option>
-    <option>Fingerless</option>
-    <option>Mittens</option>
-    <option>Hat</option>
+    <option value='gloves'>Gloves</option>
+    <option value='fingerless'>Fingerless</option>
+    <option value='mittens'>Mittens</option>
+    <option value='hat'>Hat</option>
   </optgroup>
 </select>
 </div>
 
-<div class='button-group'>
-  <select class="selectpicker" multiple-title='Pattern'>
+<div class='button-group btn-md'>
+  <select name="yarn_weight"id='yarn_weight'>
   <optgroup label="Light">
-    <option>Lace</option>
-    <option>Light Fingering</option>
-    <option>Fingering</option>
+    <option value='Lace'>Lace</option>
+    <option value='Light Fingering'>Light Fingering</option>
+    <option vale='Fingering'>Fingering</option>
   </optgroup>
   <optgroup label="Medium">
-    <option>Sport</option>
-    <option>DK</option>
-    <option>Worsted</option>
+    <option value='Sport'>Sport</option>
+    <option value='DK'>DK</option>
+    <option value='Worsted'>Worsted</option>
   </optgroup>
     <optgroup label="Heavy">
-    <option>Aran</option>
-    <option>Chunky</option>
-    <option>Bulky</option>
+    <option value='Aran'>Aran</option>
+    <option value='Bulky'>Bulky</option>
+    <option value='Super Bulky'>Super Bulky</option>
   </optgroup>
 </select>
 </div>
@@ -112,28 +102,28 @@
    
     
     <div class='container'>
-     <div class="button-group dropright" style='margin-left:0px;margin-top:-10px'>
-             <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Needles</button>
+     <div class="btn-md button-group dropright" style='margin-left:0px;margin-top:0px'>
+             <button type="btn-lg" class="btn-lg dropdown-toggle" data-toggle="dropdown">Needles</button>
      <ul class="dropdown-menu" style="float:left;margin-left:100px;width:100%">
        <h5 style="margin-left:5px"> Thin </h5>
-       <li><input type="checkbox" name='pullover'/>&nbsp;US 1s</li>
-       <li><input type="checkbox" name='cardigan'/>&nbsp;US 1.5s</li>
-       <li><input type="checkbox" name='vest'/>&nbsp;US 2s</li>
-       <li><input type="checkbox" name='vest'/>&nbsp;US 2.5s</li>
-       <li><input type="checkbox" name='vest'/>&nbsp;US 3s</li>
+       <li><input type="checkbox" name='needles_us_1'/>&nbsp;US 1s</li>
+       <li><input type="checkbox" name='needles_us_1h'/>&nbsp;US 1.5s</li>
+       <li><input type="checkbox" name='needles_us_2'/>&nbsp;US 2s</li>
+       <li><input type="checkbox" name='needles_us_2h'/>&nbsp;US 2.5s</li>
+       <li><input type="checkbox" name='needles_us_3'/>&nbsp;US 3s</li>
        <h5 style="margin-left:5px"> Medium </h5>
-       <li><input type="checkbox" name='mid-calf'/>&nbsp;US 4s</li>
-       <li><input type="checkbox" name='ankle'/>&nbsp;US 5s</li>
-       <li><input type="checkbox" name='knee-highs'/>&nbsp;US 6s</li>
-       <li><input type="checkbox" name='knee-highs'/>&nbsp;US 7s</li>
+       <li><input type="checkbox" name='needles_us_4'/>&nbsp;US 4s</li>
+       <li><input type="checkbox" name='needles_us_5'/>&nbsp;US 5s</li>
+       <li><input type="checkbox" name='needles_us_6'/>&nbsp;US 6s</li>
+       <li><input type="checkbox" name='needles_us_7'/>&nbsp;US 7s</li>
        <h5 style="margin-left:5px"> Thick </h5>
-       <li><input type="checkbox" name='gloves'/>&nbsp;US 8s</li>
-       <li><input type="checkbox" name='fingerless'/>&nbsp; US 9s</li>
-       <li><input type="checkbox" name='mittens'/>&nbsp;US 10s</li>
-       <li><input type="checkbox" name='mittens'/>&nbsp;US 10.5s</li>
-       <li><input type="checkbox" name='mittens'/>&nbsp;US 11s</li>
-       <li><input type="checkbox" name='mittens'/>&nbsp;US 13s</li>
-       <li><input type="checkbox" name='mittens'/>&nbsp;US 15s</li>
+       <li><input type="checkbox" name='needles_us_8'/>&nbsp;US 8s</li>
+       <li><input type="checkbox" name='needles_us_9'/>&nbsp; US 9s</li>
+       <li><input type="checkbox" name='needles_us_10'/>&nbsp;US 10s</li>
+       <li><input type="checkbox" name='needles_us_10h'/>&nbsp;US 10.5s</li>
+       <li><input type="checkbox" name='needles_us_11'/>&nbsp;US 11s</li>
+       <li><input type="checkbox" name='needles_us_13'/>&nbsp;US 13s</li>
+       <li><input type="checkbox" name='needles_us_15'/>&nbsp;US 15s</li>
      </ul>
     </div>
   </div>
@@ -264,17 +254,25 @@
      <div id ="left" style = "float:left;width:50%;display:inline-block">
        <div class="form-group">
          <label for="num_photos"> <h3 style='margin-right:10px;'> Photos: </h3> </label>
-         <input type="text" id="birth_month" name='birth_month' placeholder="0" style='width:40px'>
+         <input type="text" id="num_photos" name='num_photos' placeholder="0" style='width:40px' value=0>
        </div>
+       <div class='form-group'>
        <div class="slidecontainer">
-         <label for="num_photos"> <h3 style='margin-right:10px;margin-top:-2px;'>Difficulty:</h3> </label>
-         <input type="range" id="birth_month" name='hoo' placeholder="e.g. Aug">
+         <label for="difficulty_average"> <h3 style='margin-right:10px;margin-top:-2px;'>Difficulty:</h3> </label>
+         <input type="range" id="difficulty_average" name='difficulty_average' max=5 min=1 value=3>
+         <p>
+          <div style='float:left'> Easy</div>
+          <div style='float:right'> Hard!</div>
+          <p>
        </div>
+     </div>
       </div>
-
-       <div id="left" style="float:left;width:100%;margin-top:30px;margin-bottom:50px">
+      
+      <div class='button-group' style='width:100%;'>
+       <div id="left" style="float:left;width:50%;margin-top:30px;margin-bottom:50px;height:50px;">
          <button type="submit" class="btn btn-default btn-lg">Price your pattern</button>
        </div>
+     </div>
 
     </div>
      </form>
@@ -289,24 +287,6 @@
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
 
-  <script type="text/javascript">
-
-        var checkList = document.getElementById('list1');
-        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-            if (checkList.classList.contains('visible'))
-                checkList.classList.remove('visible');
-            else
-                checkList.classList.add('visible');
-        }
-
-        checkList.onblur = function(evt) {
-            checkList.classList.remove('visible');
-        }
-
-        function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
-        }
-  </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>
