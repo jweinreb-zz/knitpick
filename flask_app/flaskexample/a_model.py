@@ -87,7 +87,3 @@ def ModelIt3(fromUser  = 'Default', user_input = []):
 
 
 
-
-
-
-
