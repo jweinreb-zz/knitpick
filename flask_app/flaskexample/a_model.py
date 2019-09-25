@@ -43,6 +43,36 @@ attribute_cols = [
                   'attribute_short_rows',
                   'buttoned_mod']
 
+design_cols = [
+                  'attribute_worked_flat',#
+                  'attribute_worked_in_the_round',#
+                  'attribute_chart',#
+                  'attribute_bottom_up',#
+                  'attribute_one_piece',#
+                  'attribute_seamed',#
+                  'attribute_lace',#
+                  'attribute_ribbed_ribbing',#
+                  'attribute_textured',#
+                  'attribute_cables',#
+                  'attribute_stripes_colorwork',#
+                  'attribute_top_down',#
+                  'attribute_stranded',#
+                  'attribute_has_schematic',#
+                  'attribute_eyelets',#
+                  'attribute_short_rows',
+                  'buttoned_mod']
+
+fit_cols = [      'attribute_adult', #
+                  'attribute_female',#
+                  'attribute_unisex',#
+                  'attribute_teen',#
+                  'attribute_child',#
+                  'attribute_baby',#
+                  'attribute_positive_ease',#
+                  'attribute_male',#
+                  'attribute_toddler', #
+                  'attribute_fitted']
+
 needles_cols = ['needles_us_6',
                 'needles_us_7',
                 'needles_us_4',
@@ -132,6 +162,39 @@ def ModelIt3(fromUser  = 'Default', user_input = []):
   return dict(price=f'${np.round(price_pred, 2)}', projects=int(np.round(proj_pred, 0)))
  else:
   return 'check your input'
+
+def ModelIt5(fromUser  = 'Default', user_input = []):
+  base = "patterns/search#craft=knitting&"
+  cat = f"pc={user_input['pattern_type']}&"
+  yarnw = f"weight={user_input['yarn_weight'].replace(' ', '-').lower()}&"
+  
+  start = base + cat + yarnw
+  design = "pa="
+  for d in design_cols + ['attribute_long']:
+    if (user_input.get(d) == "on"):
+      if d == 'attribute_worked_in_the_round':
+        design += "in-the-round" + "%2B"
+      elif d == 'attribute_has_schematic':
+        design += "schematic" + "%2B"
+      elif d == 'buttoned_mod':
+        design += "buttonholes" + "%2B"
+      elif d == 'attribute_long':
+        design += 'long-sleeve' + '%2B'
+      else:
+        design += d.split('attribute_')[1].replace('_', '-') + "%2B"
+  if design != "pa=":
+    design = design[:-3] + "&"
+    start += design
+
+  fit = "fit="
+  for f in fit_cols:
+    if user_input.get(f) == "on":
+        fit += f.split('attribute_')[1].replace('_', '-') + "%2B"
+  if fit != "fit=":
+    fit = fit[:-3]  + "&"
+    start += fit
+
+  return start[:-1]
 
 def ModelIt4(fromUser  = 'Default', user_input = []):
  # fill out default values
