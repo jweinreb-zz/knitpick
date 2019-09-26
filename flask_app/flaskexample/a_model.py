@@ -6,6 +6,12 @@ import numpy as np
 from sklearn.neighbors import KDTree
 import os
 
+import base64
+from io import BytesIO
+from flask import Flask
+from matplotlib.figure import Figure
+import seaborn as sns
+
 #df = pd.read_csv("/Users/jason/github/knitpick/flask_app/knitpick.csv")
 #df.loc[:, 'buttoned_mod'] = df[['attribute_buttoned', 'attribute_buttonholes']].max(axis=1)
 
@@ -240,4 +246,40 @@ def ModelIt4(fromUser  = 'Default', user_input = []):
  else:
   return 'check your input'
 
+def ModelIt6(fromUser  = 'Default', user_input = []):
+ # fill out default values
+ 
+ user_input['num_photos'] = int(user_input['num_photos'])
+ user_input['difficulty_average'] = int(user_input['difficulty_average'])
+
+ for k, v in user_input.items():
+  if v == 'on':
+    user_input[k] = True
+ 
+ for k in attribute_cols + needles_cols:
+  if not user_input.get(k):
+    user_input[k] = False
+
+ if fromUser != 'Default':
+  clf = load(os.getenv('PRICE_PICKLE_PATH'))
+  X_new = pd.DataFrame(user_input, index=[0])
+  X_encoded = clf.named_steps['columntransformer'].fit_transform(X_new)
+  price_estimates = [clfest.predict(X_encoded)[0] for clfest in clf.named_steps['randomforestregressor'].estimators_]
+  fig = Figure()
+  ax = fig.subplots()
+  fig.set_size_inches(12, 8)
+  sns.distplot(price_estimates, ax=ax, hist=True)
+  ax.set_xlabel('Price ($)')
+  ax.set_ylabel('Density')
+  ax.set_title('Distribution of price estimates for your pattern')
+  ax.axvline(np.mean(price_estimates), linestyle='--', color='red')
+  # Save it to a temporary buffer.
+  # Save it to a temporary buffer.
+  buf = BytesIO()
+  fig.savefig(buf, format="png")
+  # Embed the result in the html output.
+  data = base64.b64encode(buf.getbuffer()).decode("ascii")
+  return f'data:image/png;base64,{data}'
+ else:
+  return "check your input"
 
