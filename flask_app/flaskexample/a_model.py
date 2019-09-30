@@ -159,8 +159,10 @@ def ModelIt3(fromUser  = 'Default', user_input = []):
  if fromUser != 'Default':
   clf = load(os.getenv('PRICE_PICKLE_PATH'))
   X_new = pd.DataFrame(user_input, index=[0])
+  X_encoded = clf.named_steps['columntransformer'].fit_transform(X_new)
+  price_estimates = [clfest.predict(X_encoded)[0] for clfest in clf.named_steps['randomforestregressor'].estimators_]
   price_pred = float(clf.predict(X_new))
-  #return f'${np.round(price_pred, 2)}'
+
   user_input['price'] = price_pred
   clf2 = load(os.getenv("PROJECTS_PICKLE_PATH"))
   X_new = pd.DataFrame(user_input, index=[0])
@@ -265,6 +267,7 @@ def ModelIt6(fromUser  = 'Default', user_input = []):
   X_new = pd.DataFrame(user_input, index=[0])
   X_encoded = clf.named_steps['columntransformer'].fit_transform(X_new)
   price_estimates = [clfest.predict(X_encoded)[0] for clfest in clf.named_steps['randomforestregressor'].estimators_]
+  price_pred = float(clf.predict(X_new))
   fig = Figure()
   ax = fig.subplots()
   fig.set_size_inches(12, 8)
@@ -272,14 +275,17 @@ def ModelIt6(fromUser  = 'Default', user_input = []):
   ax.set_xlabel('Price ($)')
   ax.set_ylabel('Density')
   ax.set_title('Distribution of price estimates for your pattern')
-  ax.axvline(np.mean(price_estimates), linestyle='--', color='red')
+  ax.axvline(x=price_pred, linestyle='--', color='red')
   # Save it to a temporary buffer.
   # Save it to a temporary buffer.
   buf = BytesIO()
   fig.savefig(buf, format="png")
   # Embed the result in the html output.
   data = base64.b64encode(buf.getbuffer()).decode("ascii")
+  #res['data'] = f'data:image/png;base64,{data}'
+  #res['price_pred'] = price_pred
   return f'data:image/png;base64,{data}'
+  #return [np.mean(price_estimates), price_pred]
  else:
   return "check your input"
 

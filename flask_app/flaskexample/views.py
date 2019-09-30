@@ -57,5 +57,5 @@ def birthmodel_output():
    user_input = request.args.to_dict()
    the_result = ModelIt3(request.args.to_dict(), request.args.to_dict())
    the_link = ModelIt5(request.args.to_dict(), request.args.to_dict())
-   the_probs = ModelIt6(request.args.to_dict(), request.args.to_dict())
-   return render_template("model_output.html", user_input=user_input, the_result=the_result, the_link=the_link, the_probs=the_probs)
+   res = ModelIt6(request.args.to_dict(), request.args.to_dict())
+   return render_template("model_output.html", user_input=user_input, the_result=the_result, res=res)
